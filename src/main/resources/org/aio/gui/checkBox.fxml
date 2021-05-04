@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -24,7 +25,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox fx:id="choiceVbox" prefHeight="131.0" prefWidth="315.0" spacing="10.0" GridPane.columnIndex="2">
+            <VBox fx:id="choiceVbox" prefHeight="131.0" prefWidth="315.0" spacing="10.0" visible="false" GridPane.columnIndex="2">
                <children>
                   <Label prefHeight="37.0" prefWidth="170.0" text="Choix" />
                   <CheckBox fx:id="fondCheckBox" mnemonicParsing="false" onAction="#handleColor" text="Couleur de fond" />
@@ -32,20 +33,23 @@
                   <CheckBox fx:id="casseCheckBox" mnemonicParsing="false" onAction="#handleColor" text="Casse" />
                </children>
             </VBox>
-            <VBox fx:id="fondRadioVbox" GridPane.rowIndex="1">
+            <VBox fx:id="fondRadioVbox" visible="false" GridPane.rowIndex="1">
                <children>
                   <Label prefHeight="32.0" prefWidth="204.0" text="Fond" />
                   <RadioButton fx:id="FondRougeRadio" mnemonicParsing="false" onAction="#handleColor" text="Rouge">
                      <VBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </VBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="grpFond" />
+                     </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="fondVertradio" mnemonicParsing="false" onAction="#handleColor" text="Vert">
+                  <RadioButton fx:id="fondVertradio" mnemonicParsing="false" onAction="#handleColor" text="Vert" toggleGroup="$grpFond">
                      <VBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </VBox.margin>
                   </RadioButton>
-                  <RadioButton fx:id="fondBleuRadio" mnemonicParsing="false" onAction="#handleColor" text="Bleu">
+                  <RadioButton fx:id="fondBleuRadio" mnemonicParsing="false" onAction="#handleColor" text="Bleu" toggleGroup="$grpFond">
                      <VBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </VBox.margin>
@@ -54,7 +58,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnSpan="2">
                <children>
-                  <TextField fx:id="textField">
+                  <TextField fx:id="textField" onKeyReleased="#loadLabel1">
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" top="30.0" />
                      </VBox.margin>
@@ -69,35 +73,41 @@
                   </Label>
                </children>
             </VBox>
-            <VBox fx:id="textRadioVbox" prefHeight="190.0" prefWidth="213.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <VBox fx:id="textRadioVbox" prefHeight="190.0" prefWidth="213.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Label prefHeight="31.0" prefWidth="217.0" text="Texte" />
                   <RadioButton fx:id="textRougeRadio" mnemonicParsing="false" onAction="#handleColor" text="Rouge">
                      <VBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </VBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="grpText" />
+                     </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="textBlancRadio" mnemonicParsing="false" onAction="#handleColor" text="Blanc">
+                  <RadioButton fx:id="textBlancRadio" mnemonicParsing="false" onAction="#handleColor" text="Blanc" toggleGroup="$grpText">
                      <VBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </VBox.margin>
                   </RadioButton>
-                  <RadioButton fx:id="textNoirRadio" mnemonicParsing="false" onAction="#handleColor" text="Noir">
+                  <RadioButton fx:id="textNoirRadio" mnemonicParsing="false" onAction="#handleColor" text="Noir" toggleGroup="$grpText">
                      <VBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </VBox.margin>
                   </RadioButton>
                </children>
             </VBox>
-            <VBox fx:id="casseRadioVbox" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <VBox fx:id="casseRadioVbox" prefHeight="200.0" prefWidth="100.0" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
                   <Label prefHeight="32.0" prefWidth="186.0" text="Casse" />
                   <RadioButton fx:id="casseMinusculeRadio" mnemonicParsing="false" onAction="#handleColor" text="Minuscule">
                      <VBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </VBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="grpCasse" />
+                     </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="casseMajusculeRadio" mnemonicParsing="false" text="Majuscule">
+                  <RadioButton fx:id="casseMajusculeRadio" mnemonicParsing="false" onAction="#handleColor" text="Majuscule" toggleGroup="$grpCasse">
                      <VBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </VBox.margin>

@@ -1,4 +1,4 @@
-App.java
- App
+org/aio/App.java
+ org.aio.App
 org/aio/gui/CheckBoxController.java
  org.aio.gui.CheckBoxController
